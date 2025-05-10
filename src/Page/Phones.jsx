@@ -1,12 +1,17 @@
 import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 
 const Phones = () => {
     const data = useLoaderData()
-    console.log(data);
+    // console.log(data);
     return (
         <div>
-            This is Phones page
+            <h2>Total Phones {data.length}</h2>
+            {
+                data.map((phone, ind) => <li key={ind} >
+                    <Link to={`/phones/${phone.id}`}>{phone.name}</Link>
+                </li>)
+            }
         </div>
     );
 };
